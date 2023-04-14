@@ -1,12 +1,12 @@
 import React from 'react';
-import './Header.css';
+import '../Header/Header.css';
 
-function Header() {
+function Footer() {
     return (
         <div className = "Title">
-        <h1>Wisconcity</h1>  
+         
         </div>
     );
 }
 
-export default Header;
+export default Footer;
