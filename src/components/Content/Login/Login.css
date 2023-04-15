@@ -11,6 +11,11 @@
     h1{
         color: white
     }
+
+    h2{
+        text-align: center;
+        
+    }
     
     label{
     display: block;
@@ -41,12 +46,14 @@
     }
     
     .error{
+    
     display: block;
     background-color: goldenrod;
     color: white;
     width: fit-content;
-    height: 50px;
+    height: 40px;
     padding: 5px;
+    
     }
     
     .success{

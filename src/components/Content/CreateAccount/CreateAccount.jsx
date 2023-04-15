@@ -3,57 +3,28 @@ import '../Login/Login.css'
 
 function CreateAccount(){ 
 
-// States for registration
+
 const [fname, setFName] = useState('');
 const [lname, setLName] = useState('');
 const [username, setUsername] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-
-// States for checking the errors
 const [submitted, setSubmitted] = useState(false);
 const [error, setError] = useState(false);
 
-// Handling the name change
-const handleFName = (e) => {
-setFName(e.target.value);
-setSubmitted(false);
-};
-
-const handleLName = (e) => {
-    setLName(e.target.value);
-    setSubmitted(false);
-    };
-
-const handleUsername = (e) => {
-    setUsername(e.target.value);
-    setSubmitted(false);
-    };
-
-// Handling the email change
-const handleEmail = (e) => {
-setEmail(e.target.value);
-setSubmitted(false);
-};
-
-// Handling the password change
-const handlePassword = (e) => {
-setPassword(e.target.value);
-setSubmitted(false);
-};
 
 // Handling the form submission
-const handleSubmit = (e) => {
+const submitThis = (e) => {
 e.preventDefault();
 if (fname === '' || email === '' || password === '' || lname === '' || username === '') {
 setError(true);
 } else {
 setSubmitted(true);
 setError(false);
+const info={fname:fname, lname:lname, username:username, email:email, password:password}; 
+		
 }
 };
-
-// Logs in
 
 
 // Showing error message if error is true
@@ -64,7 +35,7 @@ className="error"
 style={{
 display: error ? '' : 'none',
 }}>
-<h1>Please fill out all fields</h1>
+<h2>Please fill out all fields</h2>
 </div>
 );
 };
@@ -84,36 +55,31 @@ return (
 <form>
 {/* Labels and inputs for form data */}
 <div>
-<label className="label">First Name</label>
-<input onChange={handleFName} className="input"
-value={fname} type="text" />
+<label htmlFor="fname">First Name</label>
+<input type="text" name="fname" id="fname" value={fname} onChange={(e)=>setFName(e.target.value)}/> 
 </div>
 
 <div>
-<label className="label">Last Name</label>
-<input onChange={handleLName} className="input"
-value={lname} type="text" />
+<label htmlFor="lname">Last Name</label>
+<input type="text" name="lname" id="lname" value={lname} onChange={(e)=>setLName(e.target.value)}/>
 </div>
 
 <div>
-<label className="label">Username</label>
-<input onChange={handleUsername} className="input"
-value={username} type="text" />
+<label htmlFor="username">Username</label>
+<input type="text" name="username" id="username" value={username} onChange={(e)=>setUsername(e.target.value)}/>
 </div>
 
 <div>
-<label className="label">Email</label>
-<input onChange={handleEmail} className="input"
-value={email} type="email" />
+<label htmlFor="email">Email</label>
+<input type="text" name="email" id="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
 </div>
 
 <div>
-<label className="label">Password</label>
-<input onChange={handlePassword} className="input"
-value={password} type="password" />
+<label htmlFor="password">Password</label>
+<input type="text" name="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
 </div>
 
-<button onClick={handleSubmit} className="btn" type="submit">
+<button onClick={submitThis} className="btn" type="submit">
 Create
 </button>
 </form>

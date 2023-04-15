@@ -4,7 +4,7 @@ import '../Header/Header.css';
 function Footer() {
     return (
         <div className = "Title">
-         
+         <p>Footer</p>
         </div>
     );
 }

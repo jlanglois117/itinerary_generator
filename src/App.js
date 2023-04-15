@@ -14,7 +14,7 @@ const App = () => {
         <>
             <CssBaseline />
             <Header />
-            <List /> 
+           
             <Content />
             <Footer />
         </>

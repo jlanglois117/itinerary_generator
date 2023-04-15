@@ -1,33 +1,62 @@
 import React,{useState} from 'react' 
 import './Login.css'
-import CreateAccount from '../CreateAccount/CreateAccount';
+
 
 function Login(){ 
    
 	const [email,setEmail]=useState(""); 
-	const [passw,setPassw]=useState(""); 
-	const[dataInput, setDataInput]=useState(""); 
+	const [password,setpassword]=useState(""); 
+	const [error, setError] = useState(false);
+	const [submitted, setSubmitted] = useState(false);
+	
+	//const[dataInput, setDataInput]=useState(""); 
 	const submitThis=()=>{
-		const info={email:email,passw:passw}; 
-		setDataInput([info]);
+		if (password === '' || email === '') {
+			setError(true);
+		}
+		else{
+			const info={email:email,password:password}; 
+			setSubmitted(true);
+			setError(false);
+		}
+		//setDataInput([info]);
 	}
+
+	const errorMessage = (e) => {
+		
+		return (
+		<div
+		className="error"
+		style={{
+		display: error ? '' : 'none',
+		}}>
+		<h2>Please fill out all fields</h2>
+		</div>
+		);
+		};
+
 	return(
         
 	<div className = "tile">
-		<form action="" onSubmit={submitThis}> 
+		<form> 
             <div>
                 <h1>Login</h1>
             </div>
+
+			<div className="messages">
+				{errorMessage()}
+
+			</div>
 
 			<div> 
 				<label htmlFor="email">Email</label>
 				<input type="text" name="email" id="email" value={email} onChange={(e)=>setEmail(e.target.value)}/> 
 			</div> 
 			<div> 
-				<label htmlFor="passw">Password</label>
-			<input type="text" name="passw" id="passw" value={passw} onChange={(e)=>setPassw(e.target.value)}/> 
+				<label htmlFor="password">Password</label>
+			<input type="text" name="password" id="password" value={password} onChange={(e)=>setpassword(e.target.value)}/> 
 			</div>  
-			<button type="submit">Login</button>
+			<button onClick={submitThis} type="submit">Login</button>
 		</form>
 	</div>
 )} 
