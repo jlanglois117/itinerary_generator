@@ -1,13 +1,28 @@
-.Title {
+.Container {
     box-sizing: border-box;
     width: 100%;
     height: 12.5%;
     display: flex;
-    justify-content: left;
     align-items: center;
     padding: 1em;
-    
     background-color: forestgreen;
     color: #fff;
+    
+  }
+
+  h1{
+    position: relative;
+    margin-left: 2%;
   }
   
+  .links{
+    position: absolute;
+    margin-left: 85%;
+  }
+
+  a{
+    font-size: large;
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+  }
