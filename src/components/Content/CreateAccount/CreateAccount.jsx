@@ -1,5 +1,7 @@
 import React,{useState} from 'react' 
 import '../Login/Login.css'
+import Axios from 'axios';
+
 
 function CreateAccount(){ 
 
@@ -11,6 +13,16 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [submitted, setSubmitted] = useState(false);
 const [error, setError] = useState(false);
+
+const register = () =>{
+    Axios.post("https://localhost3000/login",{
+        fname: setFName,
+        lname: setLName,
+        username: setUsername,
+        email: setEmail,
+        password: setPassword,
+    })
+};
 
 
 // Handling the form submission
@@ -79,7 +91,7 @@ return (
 <input type="text" name="password" id="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
 </div>
 
-<button onClick={submitThis} className="btn" type="submit">
+<button onClick={register} className="btn" type="submit">
 Create
 </button>
 </form>
@@ -87,5 +99,7 @@ Create
 </div>
 );
 }
+
+
 
 export default CreateAccount;
