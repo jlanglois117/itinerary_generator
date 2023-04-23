@@ -17,7 +17,7 @@ const App = () => {
     const [places, setPlaces] = useState([]);
     const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-    const [bounds, setBounds] = useState(null);
+    const [bounds, setBounds] = useState('eauclaire');
 
     const [type, setType] = useState('restaurants');
     const [rating, setRating] = useState('1');
