@@ -18,9 +18,12 @@ export default makeStyles((theme) => ({
     },
     button: {
         backgroundColor: 'green',
-        marginTop: '50px',
+        margin: '50px',
+        marginLeft: '-15px',
         color: 'white',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     image: {
         borderRadius: '50%',
