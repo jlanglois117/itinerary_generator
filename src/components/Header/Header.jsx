@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <div className = 'Container'>
         <h1>Wisconcity</h1> 
-        <img src = "Wisconcity.jpg" alt ="Wisconcity logo"></img>
+        <img src = "wisconcity.jpg" alt ="Wisconcity logo"></img>
         <div className = 'links'>
         <a href= "/home">Home</a>
         <a href= "/login">Login</a>

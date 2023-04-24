@@ -10,7 +10,7 @@ const List = ( { places, setBounds, type, setType, rating, setRating, price, set
     
     
     const cityLocations = [
-        { name: 'eauclaire', nelat: '44.877575', nelng: '91.438608', swlat: '44.762017', swlng: '-91.573509'},
+        { name: 'eauclaire', nelat: '44.877575', nelng: '-91.438608', swlat: '44.762017', swlng: '-91.573509'},
         { name: 'madison', nelat: '43.119435', nelng: '-89.285650', swlat: '43.004792', swlng: '-89.542727'},
         { name: 'milwaukee', nelat: '43.132368', nelng: '-87.904997', swlat: '42.964741', swlng: '-88.024994'},
         { name: 'minocqua', nelat: '45.894470', nelng: '-89.617797', swlat: '45.854089', swlng: '-89.753569'},
@@ -21,7 +21,7 @@ const List = ( { places, setBounds, type, setType, rating, setRating, price, set
     return (
         <div>
             <Typography variant = "h4">
-                Plan Your Trip Today
+                Plan Your Trip Now
             </Typography>
             <FormControl className = {classes.formControl}>
                 <InputLabel>City</InputLabel>
