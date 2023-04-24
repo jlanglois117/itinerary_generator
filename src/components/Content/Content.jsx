@@ -6,7 +6,7 @@ import { CssBaseline, Grid } from '@material-ui/core';
 import { getPlacesData } from '../../api';
 
 
-const Content = () => {
+function Content(){
   const [places, setPlaces] = useState([]);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
 
