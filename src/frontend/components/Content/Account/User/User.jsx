@@ -1,38 +1,42 @@
 import React from "react";
 
-import { InputLabel, Box, TextField, Button, Container } from "@material-ui/core";
+import { InputLabel, Box, TextField, Button } from "@material-ui/core";
 
 import useStyles from './styles';
 import { useState, useEffect } from "react";
 
 const User = () => {
-    var mysql = require("mysql");
-    var express = require("express");
-    var app = express();
-    var connection = require('./dbConnection');
-
-    app.get('/',function(req,res) {
-        res.send('hi');
-    });
-
-    app.listen(3000, function() {
-        console.log('listen on 3000');
-        connection.connect(function(err) {
-            if(err) throw err;
-            console.log('connected');
-        })
-    });
-
-
-
-
     const classes = useStyles();
     //editing
-    const [isDisabled, setIsDisabled] = useState(true);
-    const [variant, setVariant] = useState("filled");
-    const variantChange = () => {
-        setVariant("outlined");
-    }
+    const [editMode, setEditMode] = useState(false);
+    const [user, setUser] = useState("jan3do3");
+    const [firstName, setFirstName] = useState("Jane");
+    const [lastName, setLastName] = useState("Doe");
+    const [email, setEmail] = useState("janedoe@mail.com");
+    const [password, setPassword] = useState("**********");
+    
+    const handleEditMode = () => {
+        setEditMode(!editMode);
+    };
+    const handleSaveChanges = () => {
+        setEditMode(false);
+    };
+    const handleUsernameChange = (event) => {
+        setUser(event.target.value);
+    };
+    const handleFirstNameChange = (event) => {
+        setFirstName(event.target.value);
+    };
+    const handleLastNameChange = (event) => {
+        setLastName(event.target.value);
+    };
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
+    };
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
+    };
+
     //data
     const [username, setUsername] = useState([]);
     useEffect(() => {
@@ -45,66 +49,45 @@ const User = () => {
         getUsername();
     }, []);
 
+    // {
+    //     username.map( (getUsername) => (
+    //         <tr>{getUsername.username}</tr>
+    //     )
+        
+    //     )
+    // }
+
     return(
-        <React.Fragment>
-            <Container>
-                <TextField id="tf" size="small" className={classes.text} value={"JohnDo3"} variant={variant} disabled={isDisabled}/>
-
-                <tbody>
-                    {
-                        username.map( (getUser) => (
-                            <InputLabel>test</InputLabel>
-                        ))
-                    }
-                </tbody>
-            
-            </Container>
-        </React.Fragment>
-
-        // <>
-        // <Box className={classes.all}>
-        //     <Box className={classes.image}
-        //         component="img"
-        //         sx={{
-        //         height: 200,
-        //         width: 200,
-        //         }}
-        //         alt="profile picture"
-        //         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6I0GgGO4yeT2WwnfBccOqcBhAunYjp_QSSDblnI&s"
-        //     />
-        //     <Box className={classes.container}>
-        //         <Box className={classes.labelbox}>
-        //             {/* <InputLabel className={classes.title}>Username:</InputLabel>
-        //             <InputLabel className={classes.title}>First Name:</InputLabel>
-        //             <InputLabel className={classes.title}>Last Name:</InputLabel>
-        //             <InputLabel className={classes.title}>Email:</InputLabel>
-        //             <InputLabel className={classes.title}>Password:</InputLabel> */}
-        //         </Box>
-        //         <Box className={classes.textbox}>
-
-        //             {
-        //                 username.map( (getUser) => (
-        //                     // <TextField id="tf" size="small" className={classes.text} value={getUser.username} variant={variant} disabled={isDisabled}/>
-        //                     <InputLabel>Hello</InputLabel>
-        //                 )
-
-        //                 )
-        //             }
-
-        //             {/* <TextField id="tf" size="small" className={classes.text} value={"JohnDo3"} variant={variant} disabled={isDisabled}/>
-        //             <TextField id="tf" size="small" className={classes.text} value="John" variant={variant} disabled={isDisabled}/>
-        //             <TextField id="tf" size="small" className={classes.text} label="Doe" variant={variant} disabled={isDisabled}/>
-        //             <TextField id="tf" size="small" className={classes.text} label="johndoe@mail.com" variant={variant} disabled={isDisabled}/>
-        //             <TextField id="tf" size="small" className={classes.text} label="***************" variant={variant} disabled={isDisabled}/> */}
-        //         </Box>
-        //     </Box>
-        // </Box>
-        // <Button className={classes.button} variant="edit" onClick={() => {
-        //     setIsDisabled(false);
-        //     variantChange();
-        // }}>Edit</Button>
-        // <Button id="button" onClick={() => setIsDisabled(true)} variant="edit" className={classes.button}>Save</Button>
-        // </>
+        <>
+        <Box className={classes.all}>
+            <Box className={classes.image}
+                component="img"
+                sx={{
+                height: 200,
+                width: 200,
+                }}
+                alt="profile picture"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG6I0GgGO4yeT2WwnfBccOqcBhAunYjp_QSSDblnI&s"
+            />
+            <Box className={classes.container}>
+                <Box className={classes.labelbox}>
+                    <InputLabel className={classes.title}>Username:</InputLabel>
+                    <InputLabel className={classes.title}>First Name:</InputLabel>
+                    <InputLabel className={classes.title}>Last Name:</InputLabel>
+                    <InputLabel className={classes.title}>Email:</InputLabel>
+                    <InputLabel className={classes.title}>Password:</InputLabel>
+                </Box>
+                <Box className={classes.textbox}>
+                    <TextField className={classes.text} id="username" label="Username" value={user} disabled={!editMode} onChange={handleUsernameChange}/>
+                    <TextField className={classes.text} id="firstName" label="First Name" value={firstName} disabled={!editMode} onChange={handleFirstNameChange}/>
+                    <TextField className={classes.text} id="lastName" label="Last Name" value={lastName} disabled={!editMode} onChange={handleLastNameChange}/>
+                    <TextField className={classes.text} id="email" label="Email" value={email} disabled={!editMode} onChange={handleEmailChange}/>
+                    <TextField className={classes.text} id="password" label="Password" value={password} disabled={!editMode} onChange={handlePasswordChange}/>
+                </Box>
+            </Box>
+        </Box>
+        <Button className={classes.button} variant="contained" color="primary" onClick={editMode ? handleSaveChanges : handleEditMode}>{editMode ? "Save" : "Edit"}</Button>
+        </>
     );
 }
 
