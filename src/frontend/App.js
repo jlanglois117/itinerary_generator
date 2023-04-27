@@ -8,9 +8,7 @@ import Footer from './components/Footer/Footer';
 import Account from './components/Content/Account/Account'
 import PlaceDetails from './components/Content/PlaceDetails/PlaceDetails';
 import LoginContent from './components/Content/LoginContent';
-
-
-
+import Itineraries from './components/Content/Account/Itineraries/itineraries'
 
 const App = () => {
     return (
@@ -24,7 +22,8 @@ const App = () => {
                     <Route path ="/home" element={<Content />} />
                     <Route path ="/account" element ={<Account />} />
                     <Route path ="/login" element ={<LoginContent />} />
-                    
+                    <Route path ="/itineraries" element ={<Itineraries />} />
+
                 </Routes>
             </BrowserRouter>
             <Footer />
