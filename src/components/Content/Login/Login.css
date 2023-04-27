@@ -16,6 +16,10 @@
         text-align: center;
         
     }
+
+    .message{
+        color: white;
+    }
     
     label{
     display: block;

@@ -40,8 +40,10 @@ function Content(){
     
     return (
         <div class = 'body'>
+          <div class = 'child'>
          <Grid container spacing={3} style={{ width: '100%'}} alignItems='center' justifyContent='center'>
                 <Grid item xs={12} md={5}>
+                  
                     <List 
                         places={filteredPlaces.length ? filteredPlaces : places}
                         setBounds={setBounds}
@@ -52,9 +54,11 @@ function Content(){
                         price={price}
                         setPrice={setPrice}
                     />
+                   
                 </Grid>
             </Grid>
 
+            </div>
         </div>
     );
 }
