@@ -21,7 +21,7 @@ const List = ( { places, setBounds, type, setType, rating, setRating, price, set
     return (
         <div>
             <Typography variant = "h4">
-                Plan Your Trip Now
+                Plan Your Trip
             </Typography>
             <FormControl className = {classes.formControl}>
                 <InputLabel>City</InputLabel>
