@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer';
 import Account from './components/Content/Account/Account'
 import PlaceDetails from './components/Content/PlaceDetails/PlaceDetails';
 import LoginContent from './components/Content/LoginContent';
-import Generator from './components/Content/Generator';
+import Generator from './components/Content/Generator/Generator';
 
 
 
