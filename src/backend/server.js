@@ -1,7 +1,10 @@
+import { useState } from "react";
+
 var mysql = require("mysql");
 const cors = require("cors");
 var express = require("express");
 // var app = express();
+
 
 const { check, validationResult } = require('express-validator');
 
@@ -64,3 +67,19 @@ connection.connect(function(err){
     console.log(result);
   });
 });
+
+const [user, setUser] = useState({}); //NEW
+useEffect(() => {
+  fetchUserData();
+}, []);
+const fetchUserData = async () => {
+  try {
+      const response = await fetch('http://localhost:3000/user');
+      const data = await response.json();
+      setUser(data);
+      console.log(user.username);
+  }catch(error){
+      console.error(error);
+  }
+};
+
