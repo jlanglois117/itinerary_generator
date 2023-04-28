@@ -109,8 +109,8 @@ const User = () => {
                 </Box>
                 <Box className={classes.textbox}>
                     <TextField className={classes.text} label="Username" name="username" value={user.username} disabled={!editMode} onChange={handleChange}/>
-                    <TextField className={classes.text} label="First Name" name="fName" value={user.fName} disabled={!editMode} onChange={handleChange}/>
-                    <TextField className={classes.text} label="Last Name" name="lName" value={user.lName} disabled={!editMode} onChange={handleChange}/>
+                    <TextField className={classes.text} label="First Name" name="fName" value={user.fname} disabled={!editMode} onChange={handleChange}/>
+                    <TextField className={classes.text} label="Last Name" name="lName" value={user.lname} disabled={!editMode} onChange={handleChange}/>
                     <TextField className={classes.text} label="Email" name="email" value={user.email} disabled={!editMode} onChange={handleChange}/>
                     <TextField className={classes.text} label="Password" name="password" value={user.password} disabled={!editMode} onChange={handleChange}/>
                     {/* <TextField className={classes.text} id="username" label="Username" value={user} disabled={!editMode} onChange={handleUsernameChange}/>
