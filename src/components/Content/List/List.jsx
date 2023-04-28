@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Grid, Typography, InputLabel, MenuItem, FormControl, Select }  from '@material-ui/core';
+import { Grid, Typography, InputLabel, MenuItem, FormControl, Select, Button }  from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
@@ -20,12 +21,12 @@ const List = ( { places, setBounds, type, setType, rating, setRating, price, set
 
     return (
         <div>
-            <Typography variant = "h4">
-                Plan Your Trip Now
+            <Typography variant = "h4" className = "heading">
+                Find Your Wisconsin Destination!
             </Typography>
-            <FormControl className = {classes.formControl}>
+            <FormControl className={classes.formControl}>
                 <InputLabel>City</InputLabel>
-                <Select value = {city} onChange = {(e) => {
+                <Select value={city} onChange={(e) => {
                     console.log(e);
                     const selectedCity = cityLocations.find((city) => city.name === e.target.value);
                     setCity(e.target.value);
@@ -37,42 +38,28 @@ const List = ( { places, setBounds, type, setType, rating, setRating, price, set
                         
                         }}>
 
-                    <MenuItem value = "eauclaire">Eau Claire</MenuItem>
-                    <MenuItem value = "madison">Madison</MenuItem>
-                    <MenuItem value = "milwaukee">Milwaukee</MenuItem>
-                    <MenuItem value = "minocqua">Minocqua</MenuItem>
-                    <MenuItem value = "greenbay">Green Bay</MenuItem>
+                    <MenuItem value="eauclaire">Eau Claire</MenuItem>
+                    <MenuItem value="madison">Madison</MenuItem>
+                    <MenuItem value="milwaukee">Milwaukee</MenuItem>
+                    <MenuItem value="minocqua">Minocqua</MenuItem>
+                    <MenuItem value="greenbay">Green Bay</MenuItem>
                 </Select>
             </FormControl>
-            <FormControl className = {classes.formControl}>
+            <FormControl className={classes.formControl}>
                 <InputLabel>Type</InputLabel>
-                <Select value = {type} onChange = {(e) => setType(e.target.value)}>
-                    <MenuItem value = "restaurants">Restaurants</MenuItem>
-                    <MenuItem value = "hotels">Hotels</MenuItem>
-                    <MenuItem value = "attractions">Attractions</MenuItem>
+                <Select value={type} onChange={(e) => setType(e.target.value)}>
+                    <MenuItem value="restaurants">Restaurants</MenuItem>
+                    <MenuItem value="hotels">Hotels</MenuItem>
+                    <MenuItem value="attractions">Attractions</MenuItem>
                 </Select>
             </FormControl>
-            <FormControl className = {classes.formControl} >
-                <InputLabel>Rating</InputLabel>
-                <Select value = {rating} onChange = {(e) => setRating(e.target.value)}>
-                    <MenuItem value = {1}>1+</MenuItem>
-                    <MenuItem value = {2}>2+</MenuItem>
-                    <MenuItem value = {3}>3+</MenuItem>
-                    <MenuItem value = {4}>4+</MenuItem>
-                </Select>
-            </FormControl>
-            <FormControl className = {classes.formControl} >
-                <InputLabel>Price</InputLabel>
-                <Select value = {price} onChange = {(e) => setPrice(e.target.value)}>
-                    <MenuItem value = {1}>1+</MenuItem>
-                    <MenuItem value = {2}>2+</MenuItem>
-                    <MenuItem value = {3}>3+</MenuItem>
-                    <MenuItem value = {4}>4+</MenuItem>
-                </Select>
-            </FormControl>
-            <Grid container spacing ={3} className={classes.list}>
+            <Link to="/generator">
+                <Button variant="contained" color="primary" size="large" style={{ float: 'right', marginTop: '10px', backgroundColor: '#228B22' }}>Generate Trips</Button>
+            </Link>
+            <Grid container spacing={3} className={classes.list}>
                 {places?.map((place, i) => (
-                    <Grid item key ={i} xs={12}>
+                    place.name &&
+                    <Grid item key={i} xs={12} md={4}>
                         <PlaceDetails place={place} />
                     </Grid>
                 ))} 

@@ -2,7 +2,36 @@
     background-color: white;
     display: flex;
     width: 100%;
-    height: 570px;
-    padding-top: 30px;
+    height: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 142px);
+ 
 }
 
+.list-container {
+    overflow: hidden;
+    height: fit-content;
+}
+
+.child{
+    display: inline-block;
+    
+
+}
+
+.heading{
+    font-family: 'MoonGlade';
+}
+
+@font-face {
+    font-family: 'MoonGlade';
+    src: url('../Header/moonglade.ttf');
+  }
+  
+  @font-face {
+    font-family: 'Millenia';
+    src: url('../Header/millenia.ttf');
+  }

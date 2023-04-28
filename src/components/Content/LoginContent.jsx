@@ -6,11 +6,13 @@ import './Content.css'
 
 function LoginContent() {
     return (
-        <div class = 'body'>
-         
+        <div className = 'body'>
+         <div className = 'child'>
          <Login />
+         </div>
+         <div className = 'child'>
 		 <CreateAccount />
-         
+         </div>
         </div>
     );
 }

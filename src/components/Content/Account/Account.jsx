@@ -4,6 +4,7 @@ import { Grid } from "@material-ui/core";
 
 import Sidebar from "./Sidebar/Sidebar";
 import User from "./User/User";
+import Itineraries from"./Itineraries/itineraries";
 
 const Account = () => {
     return(
@@ -15,6 +16,7 @@ const Account = () => {
                 </Grid>
                 <Grid item xs={12} md={10}>
                     <User/>
+                    <Itineraries/>
                 </Grid>
             </Grid>
         </>
