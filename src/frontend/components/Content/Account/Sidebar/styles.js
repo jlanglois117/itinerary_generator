@@ -7,6 +7,10 @@ export default makeStyles((theme) => ({
         padding: '10px',
         textAlign: 'left'
     },
+    button2: {
+        textAlign: 'left',
+        paddingLeft: '10px'
+    },
     container: {
         height: '100%',
         borderRightColor: 'black',
