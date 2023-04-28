@@ -24,4 +24,47 @@ export const getPlacesData = async (type, swlat, swlng, nelat, nelng) => {
     } catch (error) {
         console.log(error);
     }
+};
+
+    export const generateTrips = async (swlat, swlng, nelat, nelng, count) => {
+    const hotels = await getPlacesData('hotels', swlat, swlng, nelat, nelng);
+    const attractions = await getPlacesData('attractions', swlat, swlng, nelat, nelng);
+    const restaurants = await getPlacesData('restaurants', swlat, swlng, nelat, nelng);
+
+    console.log(hotels);
+    console.log(attractions);
+    console.log(restaurants);
+    
+    const randomHotel = getRandomElement(hotels);
+
+    const trips = [];
+    for (let i = 0; i < count; i++) {
+    const days = [];
+    days.push(getRandomElement(attractions));
+    days.push(getRandomElement(restaurants));
+    days.push(getRandomElement(attractions));
+    days.push(getRandomElement(restaurants));
+    days.push(randomHotel);
+    trips.push(days);
+    console.log(days);
+    console.log(trips);
+    }
+    return trips;
 }
+  
+//   function getRandomElement(arr) {
+//     const randIndex = Math.floor(Math.random() * arr.length );
+//     const randomElement = arr[randIndex];
+//     return randomElement;
+//   }
+
+//   const handleGenerateTrips = async () => {
+//     if (bounds && count) {
+//       try {
+//         const data = await generateTrips(bounds.swlat, bounds.swlng, bounds.nelat, bounds.nelng, count);
+//         setPlaces(data);
+//       } catch (error) {
+//         console.log(error);
+//       }
+//     }
+//   };
