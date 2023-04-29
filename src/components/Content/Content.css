@@ -18,8 +18,6 @@
 
 .child{
     display: inline-block;
-    
-
 }
 
 .heading{
@@ -35,3 +33,4 @@
     font-family: 'Millenia';
     src: url('../Header/millenia.ttf');
   }
+

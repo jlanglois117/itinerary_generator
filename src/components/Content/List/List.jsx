@@ -21,9 +21,6 @@ const List = ( { places, setBounds, type, setType, rating, setRating, price, set
 
     return (
         <div>
-            <Typography variant = "h4" className = "heading">
-                Find Your Wisconsin Destination!
-            </Typography>
             <FormControl className={classes.formControl}>
                 <InputLabel>City</InputLabel>
                 <Select value={city} onChange={(e) => {

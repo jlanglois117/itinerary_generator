@@ -30,6 +30,7 @@ img {
 .links {
   position: absolute;
   margin-left: 90%
+
 }
 
 a {
@@ -44,7 +45,6 @@ p {
   color: forestgreen;
 }
 
-
 @font-face {
   font-family: 'MoonGlade';
   src: url('./moonglade.ttf');
@@ -54,3 +54,4 @@ p {
   font-family: 'Millenia';
   src: url('./millenia.ttf');
 }
+

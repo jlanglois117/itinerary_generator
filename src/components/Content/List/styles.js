@@ -22,5 +22,6 @@ export default makeStyles((theme) => ({
     heading: {
         fontFamily: 'MoonGlade',
     }
+
     
 }));
