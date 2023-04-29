@@ -1,10 +1,7 @@
-import { useState } from "react";
-
 var mysql = require("mysql");
 const cors = require("cors");
 var express = require("express");
-// var app = express();
-
+const session = require('express-session');
 
 const { check, validationResult } = require('express-validator');
 
@@ -18,6 +15,13 @@ var connection = mysql.createConnection({
     user: "CS355G1",
     password: "15BT76AV"
 })
+
+//SESSION STUFF NEW
+app.use(session({
+  secret: 'mysecret',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.post('/signup', (req, res) => {    
   const sql = "INSERT INTO login (fName, lName, username, email, password) VALUES (?)";    
@@ -60,26 +64,43 @@ app.listen(3000, ()=>{
   console.log("listening")
 })
 
-connection.connect(function(err){
-  if(err) throw err;
-  connection.query("SELECT * FROM user", function(err,result,fields){
-    if(err) throw err;
-    console.log(result);
-  });
-});
+// function getUserById(userId, callBack){
+//   connection.query('SELECT * FROM user WHERE id = ?', [userId], (err,result,fields) => {
+//     if(error) {
+//       return callBack(err,null);
+//     }
+//     callBack(null,result[0]);
+//   });
+// }
 
-const [user, setUser] = useState({}); //NEW
-useEffect(() => {
-  fetchUserData();
-}, []);
-const fetchUserData = async () => {
-  try {
-      const response = await fetch('http://localhost:3000/user');
-      const data = await response.json();
-      setUser(data);
-      console.log(user.username);
-  }catch(error){
-      console.error(error);
-  }
-};
+//SESSION STUFF
+app.get('/account', (req,res) => {
+  const userId = req.session.userId;
+  // getUserById(userId, callBack){
+  //     connection.query('SELECT * FROM user WHERE id = ?', [userId], (err,result,fields) => {
+  //       if(error) {
+  //         return callBack(err,null);
+  //       }
+  //       callBack(null,result[0]);
+  //     });
+  //   }
+  // const userData = getUserById(userId,)
+})
 
+//SHOULD USE
+// app.post('/account', (req, res) => {
+//   const sql = "SELECT * FROM user WHERE id = ?";
+//   connection.query(sql,[req.body.id], function(err,result,fields) {
+//     if(err) throw err;
+//     console.log(result);
+//   });
+// });
+
+//WORKS BUT NOT RIGHT
+// connection.connect(function(err){
+//   if(err) throw err;
+//   connection.query("SELECT * FROM user WHERE id = 1", function(err,result,fields){
+//     if(err) throw err;
+//     console.log(result);
+//   });
+// });
