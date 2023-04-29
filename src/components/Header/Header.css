@@ -7,6 +7,8 @@
   justify-content: space-between;
   background-color: forestgreen;
   color: #fff;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 h1 {
@@ -15,7 +17,7 @@ h1 {
   font-family: MoonGlade;
   display: inline-block; 
   vertical-align: middle;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 img {
@@ -27,7 +29,8 @@ img {
 
 .links {
   position: absolute;
-  margin-left: 87%;
+  margin-left: 90%
+
 }
 
 a {
@@ -51,3 +54,4 @@ p {
   font-family: 'Millenia';
   src: url('./millenia.ttf');
 }
+

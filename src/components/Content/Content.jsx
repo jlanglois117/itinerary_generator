@@ -13,6 +13,7 @@ function Content(){
 
 
   useEffect(() => {
+    
       if (bounds) {
         getPlacesData(type, bounds.swlat, bounds.swlng, bounds.nelat, bounds.nelng)
           .then((data) => {

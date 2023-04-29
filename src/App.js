@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { CssBaseline } from '@material-ui/core';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
@@ -14,6 +14,13 @@ import Generator from './components/Content/Generator/Generator';
 
 
 const App = () => {
+    /*useEffect(() => {
+        const loggedInUser = localStorage.getItem("user");
+        if (loggedInUser) {
+          const foundUser = JSON.parse(loggedInUser);
+         // setUser(foundUser);
+        }
+    })*/
     return (
         <>
             <CssBaseline />

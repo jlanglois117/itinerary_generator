@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Header.css';
 import Logo from './WLogo3_Clipped.png';
 
 const Header = () => {
+    
     return (
         <div className='Container'>
             <a href='/home'>
@@ -16,6 +17,6 @@ const Header = () => {
             </div>
         </div>
     );
-}
+  }
 
 export default Header;
