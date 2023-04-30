@@ -5,7 +5,7 @@ import { InputLabel, Box, TextField, Button } from "@material-ui/core";
 import useStyles from './styles';
 import { useState, useEffect } from "react";
 
-import { useJwt } from "react-jwt";
+//import { useJwt } from "react-jwt";
 import axios from "axios";
 //import { response } from "express";
 
@@ -50,17 +50,17 @@ const User = ({token}) => {
     // const [username, setUsername] = useState([]);
    
     useEffect(() => {
-        const decodedToken = useJwt.decode(token);
-        if(decodedToken) {
-            axios
-                .get('http://localhost:3000/user/${decodedToken.id}')
-                .then((response) => {
-                    setUserData(response.data);
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        }
+        // const decodedToken = useJwt.decode(token);
+        // if(decodedToken) {
+        //     axios
+        //         .get('http://localhost:3000/user/${decodedToken.id}')
+        //         .then((response) => {
+        //             setUserData(response.data);
+        //         })
+        //         .catch((error) => {
+        //             console.error(error);
+        //         });
+        // }
 
         //fetchUserData(); //NEW
 
