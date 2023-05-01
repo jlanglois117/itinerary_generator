@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, FormControl, InputLabel, Select, MenuItem, Grid, Typography} from '@material-ui/core';
 import { getPlacesData } from '../../../api';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
-
+import '../Content.css';
 
 
 const Generator = () => {
@@ -85,7 +85,10 @@ const Generator = () => {
     
 
   return (
-    <div>
+    <div className ='body'>
+      <div>
+      <h2>Let Us Plan Your Trip For You!</h2>
+      
       <FormControl>
         <InputLabel>City</InputLabel>
         <Select value={city} onChange={(e) => {
@@ -136,6 +139,7 @@ const Generator = () => {
     ))
   }
 </Grid>
+</div>
     </div>
   );
 };

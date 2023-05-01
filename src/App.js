@@ -8,8 +8,8 @@ import Footer from './components/Footer/Footer';
 import Account from './components/Content/Account/Account'
 import PlaceDetails from './components/Content/PlaceDetails/PlaceDetails';
 import LoginContent from './components/Content/LoginContent';
+import Itineraries from './components/Content/Account/Itineraries/itineraries';
 import Generator from './components/Content/Generator/Generator';
-
 
 
 
@@ -28,9 +28,11 @@ const App = () => {
             <BrowserRouter>
                <Routes>
                     <Route path="/" element={<Navigate replace to="/home" />} />
+
                     <Route path ="/home" element={<Content />} />
                     <Route path ="/account" element ={<Account />} />
                     <Route path ="/login" element ={<LoginContent />} />
+                    <Route path ="/itineraries" element ={<Itineraries />} />
                     <Route path="/generator" element={<Generator />} />
                 </Routes>
             </BrowserRouter>

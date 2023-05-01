@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Grid, Typography, InputLabel, MenuItem, FormControl, Select, Button }  from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import '../Content.css'
+import Logo from '../../Header/WLogo3_Clipped.png';
+
 
 import useStyles from './styles';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
@@ -21,6 +24,8 @@ const List = ( { places, setBounds, type, setType, rating, setRating, price, set
 
     return (
         <div>
+            <h2>Find Your Wisconsin Destination!</h2>
+            
             <FormControl className={classes.formControl}>
                 <InputLabel>City</InputLabel>
                 <Select value={city} onChange={(e) => {

@@ -64,5 +64,3 @@ const PlaceDetails = ({ place }) => {
 };
 
 export default PlaceDetails;
-
-

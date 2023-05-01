@@ -2,10 +2,12 @@
     float: left;
     text-align: center;
     background-color:forestgreen;
-    width: 33%;
+    width: fit-content;
     height: fit-content;
     margin-left: 10%;
     padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
     }
 
     h1{

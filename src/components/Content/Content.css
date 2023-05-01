@@ -2,12 +2,15 @@
     background-color: white;
     display: flex;
     width: 100%;
+    overflow: hidden;
+    position: relative;
     height: auto;
     padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content:space-evenly;
     height: calc(100vh - 142px);
+    
+    position: relative;
  
 }
 
@@ -16,12 +19,27 @@
     height: fit-content;
 }
 
-.child{
-    display: inline-block;
+.header{
+    padding-top: 30px;
+    padding-left: 30px;
 }
 
-.heading{
+h2{
     font-family: 'MoonGlade';
+    color: black;
+    font-size: x-large;
+    font-weight: bolder;
+    text-align: left;
+}
+
+.pic{
+    position: absolute;
+    text-align: center;
+    margin-top: 10px;
+    width: 650px;
+    height: auto;
+    z-index: -1;
+    
 }
 
 @font-face {
@@ -33,4 +51,3 @@
     font-family: 'Millenia';
     src: url('../Header/millenia.ttf');
   }
-

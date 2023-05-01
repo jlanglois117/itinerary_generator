@@ -18,6 +18,7 @@ h1 {
   display: inline-block; 
   vertical-align: middle;
   padding-left: 15px;
+  
 }
 
 img {
@@ -29,21 +30,28 @@ img {
 
 .links {
   position: absolute;
-  margin-left: 90%
-
+  margin-left: 83%
 }
 
-a {
-  font-size: large;
+.nav {
+  font-size: x-large;
   color: white;
+  padding: 30px 15px;
   text-decoration: none;
   margin-right: 10px;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: "MoonGlade";
+}
+
+a:hover, a:active {
+  background-color: green;
 }
 
 p {
   color: forestgreen;
 }
+
+
+
 
 @font-face {
   font-family: 'MoonGlade';
@@ -54,4 +62,3 @@ p {
   font-family: 'Millenia';
   src: url('./millenia.ttf');
 }
-

@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import List from './List/List';
 import PlaceDetails from './PlaceDetails/PlaceDetails';
 import './Content.css'
-import { CssBaseline, Grid } from '@material-ui/core';
+import { CssBaseline, Grid, Typography } from '@material-ui/core';
 import { getPlacesData } from '../../api';
+import Logo from '../Header/WLogo3_Clipped.png';
+
 
 
 function Content(){
+  
   const [places, setPlaces] = useState([]);
   const [bounds, setBounds] = useState('eauclaire');
   const [type, setType] = useState('restaurants');
@@ -27,7 +30,9 @@ function Content(){
     }, [type, bounds]);
     
     return (
+      
         <div class = 'body'>
+          <img className = 'pic' src={Logo} />
          <Grid container spacing={3} style={{ width: '100%'}} alignItems='center' justifyContent='center'>
                 <Grid item xs={12} md={12} className='list-container'>
                   <List
