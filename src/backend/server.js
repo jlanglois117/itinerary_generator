@@ -1,6 +1,3 @@
-
-
-
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
@@ -56,7 +53,7 @@ const db = mysql.createConnection({
             }           
            })})
 
-  app.listen(3306, ()=>{
+  app.listen(3306, ()=>{ //change back to 3306
     console.log("listening")
   })
 
@@ -67,5 +64,19 @@ const db = mysql.createConnection({
       console.log(result);
     });
   });
-  
-  
+
+//EDIT
+const {promisify} = require('util');
+const saveTrips = require('./../components/Content/Generator/Generator.jsx');
+const sql = "INSERT INTO itineraries (data) VALUES (?)";
+const dbQuery = promisify(db.query).bind(db);
+
+console.log(test);
+
+dbQuery(sql,[saveTrips()])
+  .then(result => {
+    console.log("Success");
+  })
+  .catch(err => {
+    throw err;
+  });
