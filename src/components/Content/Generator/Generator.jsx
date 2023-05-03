@@ -3,6 +3,8 @@ import { Button, FormControl, InputLabel, Select, MenuItem, Grid, Typography} fr
 import { getPlacesData } from '../../../api';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import '../Content.css';
+//EDIT
+import axios from 'axios'; //used for data transferring
 
 
 const Generator = () => {
@@ -68,9 +70,29 @@ const Generator = () => {
   const saveTrips = () => {
     const tripsJson = JSON.stringify(trips);
     console.log(tripsJson);
-    return tripsJson; 
+
+    //EDIT
+    axios.post('http://localhost:3306/itinerary', tripsJson) //sends the data in tripsJson from that link (we created that link)
+      .then((res) => {
+        console.log('success', res.data);
+      })
+      .catch((error) => {
+        console.error('error', error);
+      });
+      //EDIT
+      console.log('test3'); //this is just a test to see if the code is being reached
+
+    return tripsJson; //NOT EDIT
   };
 
+   //EDIT //FAILED ATTEMPT, KEPT JUST INCASE
+  // fs.writeFile('savrTrips.json', tripsJson, function(err) {
+  //   if(err) {
+  //     console.log(err);
+  //   }else{
+  //     console.log('success');
+  //   }
+  // })
 
     const handleGenerateTrips = async () => {
       if (bounds && days) {

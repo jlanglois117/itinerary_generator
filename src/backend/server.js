@@ -57,6 +57,7 @@ const db = mysql.createConnection({
     console.log("listening")
   })
 
+  //EVENTUALLY FOR USER ACCOUNT DATA DISPLAY?
   db.connect(function(err){
     if(err) throw err;
     db.query("SELECT * FROM user", function(err,result,fields){
@@ -66,17 +67,39 @@ const db = mysql.createConnection({
   });
 
 //EDIT
-const {promisify} = require('util');
-const saveTrips = require('./../components/Content/Generator/Generator.jsx');
-const sql = "INSERT INTO itineraries (data) VALUES (?)";
+const { promisify } = require('util');
 const dbQuery = promisify(db.query).bind(db);
+app.post('/itinerary', async(req,res) => { //gets data from the link ending in itinerary
+  const trips = req.body.trips; //pulls that data and puts it in this variable
+  console.log(trips); // print out what's in the variable UNSUCCESSFUL
+  //const sql = 'INSERT INTO itineraries (data) VALUES (?)'; //WHAT SHOULD WORK TO INSERT DATA INTO DB
+  //BELOW DOES NOT WORK, JUST A TEST STRING
+  const sql = 'INSERT INTO itineraries (data) VALUES ("[[{\"location_id\":\"1960985\",\"name\":\"Great Lakes Distillery\",\"latitude\":\"43.02667\",\"longitude\":\"-87.91864\",\"num_reviews\":\"786\",\"timezone\":\"America/Chicago\",\"location_string\":\"Milwaukee, Wisconsin\"}]")';
 
-console.log(test);
+  try{
+    const result = await dbQuery(sql, [trips]); //combines sql string and the data
+    res.json(result);
+    console.log(result); //attempt at printing out what's in the DB, UNSUCCESSFUL
+  }catch (err) {
+    console.error(err);
+    res.json('Error');
+  }
+});
 
-dbQuery(sql,[saveTrips()])
-  .then(result => {
-    console.log("Success");
-  })
-  .catch(err => {
-    throw err;
-  });
+//FAILED ATTEMPT
+// const {promisify} = require('util');
+// // const saveTrips = require('./../components/Content/Generator/Generator.jsx');
+// //const saveTrips = require('./../components/Content/Generator/Generator/saveTrips');
+// const saveTrips = require('./../components/Content/Generator/Generator.jsx').saveTrips;
+// const sql = "INSERT INTO itineraries (data) VALUES (?)";
+// const dbQuery = promisify(db.query).bind(db);
+
+// console.log(test);
+
+// dbQuery(sql,[saveTrips()])
+//   .then(result => {
+//     console.log("Success");
+//   })
+//   .catch(err => {
+//     throw err;
+//   });
