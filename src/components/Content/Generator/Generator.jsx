@@ -4,8 +4,11 @@ import { getPlacesData } from '../../../api';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import '../Content.css';
 
+import useStyles from './styles';
 
 const Generator = () => {
+
+  const classes = useStyles();
 
     const [trips, setTrips] = useState([]);
     const [city, setCity] = useState('eauclaire');
@@ -89,7 +92,7 @@ const Generator = () => {
       <div>
       <h2>Let Us Plan Your Trip For You!</h2>
       
-      <FormControl>
+      <FormControl className={classes.formControl}>
         <InputLabel>City</InputLabel>
         <Select value={city} onChange={(e) => {
             console.log(e);
@@ -110,7 +113,7 @@ const Generator = () => {
             <MenuItem value="greenbay">Green Bay</MenuItem>
         </Select>
       </FormControl>
-      <FormControl>
+      <FormControl className={classes.formControl}>
         <InputLabel id="days-label">Number of Days</InputLabel>
         <Select value={days} onChange={(e) => {setDays(e.target.value)}}>
           <MenuItem value={1}>1</MenuItem>
@@ -122,8 +125,8 @@ const Generator = () => {
           <MenuItem value={7}>7</MenuItem>
         </Select>
       </FormControl>
-      <Button variant="contained" color="primary" onClick={handleGenerateTrips}>Generate Trip</Button>
-      <Button variant="contained" color="primary" onClick={saveTrips}>Save Trip</Button>
+      <Button className={classes.buttons} variant="contained" color="primary" style={{backgroundColor: 'green'}} onClick={handleGenerateTrips}>Generate Trip</Button>
+      <Button className={classes.buttons} variant="contained" color="primary" style={{backgroundColor: 'green'}}onClick={saveTrips}>Save Trip</Button>
       <Grid container spacing={3}>
   {trips &&
     trips.map((trip, i) => (
