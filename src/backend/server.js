@@ -53,7 +53,7 @@ const db = mysql.createConnection({
             }           
            })})
 
-  app.listen(3306, ()=>{ //change back to 3306
+  app.listen(3306, ()=>{ 
     console.log("listening")
   })
 
@@ -66,40 +66,39 @@ const db = mysql.createConnection({
     });
   });
 
-//EDIT
-const { promisify } = require('util');
-const dbQuery = promisify(db.query).bind(db);
-app.post('/itinerary', async(req,res) => { //gets data from the link ending in itinerary
-  const trips = req.body.trips; //pulls that data and puts it in this variable
-  console.log(trips); // print out what's in the variable UNSUCCESSFUL
-  //const sql = 'INSERT INTO itineraries (data) VALUES (?)'; //WHAT SHOULD WORK TO INSERT DATA INTO DB
-  //BELOW DOES NOT WORK, JUST A TEST STRING
-  const sql = 'INSERT INTO itineraries (data) VALUES ("[[{\"location_id\":\"1960985\",\"name\":\"Great Lakes Distillery\",\"latitude\":\"43.02667\",\"longitude\":\"-87.91864\",\"num_reviews\":\"786\",\"timezone\":\"America/Chicago\",\"location_string\":\"Milwaukee, Wisconsin\"}]")';
+  //storing itineraries
+  const { promisify } = require('util');
+  const dbQuery = promisify(db.query).bind(db);
 
-  try{
-    const result = await dbQuery(sql, [trips]); //combines sql string and the data
-    res.json(result);
-    console.log(result); //attempt at printing out what's in the DB, UNSUCCESSFUL
-  }catch (err) {
-    console.error(err);
-    res.json('Error');
-  }
-});
+  app.post('/itinerary', async(req,res) => { //gets data from the link ending in itinerary
+    const trips = req.body.tripsJson; //pulls that data and puts it in this variable
+    console.log('its from itinerary post');
+    console.log(req.body.tripsJson);
+    const sql = 'INSERT INTO itineraries (data) VALUES (?)'; 
+    try{ 
+      const result = await dbQuery(sql, [trips]); //combines sql string and the data
+      console.log('insert');
+      res.json(result);
+      console.log(result); //attempt at printing out what's in the DB, UNSUCCESSFUL
+    }catch (err) {
+      console.error(err);
+      res.json('Error');
+    }
+  });
 
-//FAILED ATTEMPT
-// const {promisify} = require('util');
-// // const saveTrips = require('./../components/Content/Generator/Generator.jsx');
-// //const saveTrips = require('./../components/Content/Generator/Generator/saveTrips');
-// const saveTrips = require('./../components/Content/Generator/Generator.jsx').saveTrips;
-// const sql = "INSERT INTO itineraries (data) VALUES (?)";
-// const dbQuery = promisify(db.query).bind(db);
-
-// console.log(test);
-
-// dbQuery(sql,[saveTrips()])
-//   .then(result => {
-//     console.log("Success");
-//   })
-//   .catch(err => {
-//     throw err;
-//   });
+  app.get('/itinerary', async(req,res) => {
+    const sql = "SELECT data FROM itineraries LIMIT 3";
+    try{
+      const result = await dbQuery(sql);
+      if(result.length > 0){
+        res.json(result[0].data);
+        console.log('from select'); //test
+        console.log(result[0].data); //test
+      }else{
+        res.status(404).json('no data');
+      }
+    }catch(err) {
+      console.error(err);
+      res.status(500).json('internal serve issue');
+    }
+  });
