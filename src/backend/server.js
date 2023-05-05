@@ -1,6 +1,5 @@
 
 
-
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
@@ -36,8 +35,8 @@ const db = mysql.createConnection({
       })})
 
   app.post('/login', (req, res) => {    
-    const sql = "SELECT * FROM user WHERE email = ? AND password = ?";    
-    db.query(sql, [req.body.email,req.body.password ], 
+    const sql = "SELECT fname, lname, username FROM user WHERE email = ? AND password = ?";    
+    db.query(sql, [req.body.email,req.body.password, res.fname, res.lname, res.username], 
       (err, data) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {            
@@ -47,25 +46,25 @@ const db = mysql.createConnection({
           if(err) {               
              return res.json("Error");            
             }            
-            if(data.length > 0) {               
+            if(data.length > 0) {   
+                        
                return res.json("Success");            
               } 
-              else {                
+              else {  
+                            
                 return res.json("Failure");            
               }        
             }           
            })})
 
+          
+
+    
+          
+
   app.listen(3306, ()=>{
     console.log("listening")
   })
 
-  db.connect(function(err){
-    if(err) throw err;
-    db.query("SELECT * FROM user", function(err,result,fields){
-      if(err) throw err;
-      console.log(result);
-    });
-  });
   
   

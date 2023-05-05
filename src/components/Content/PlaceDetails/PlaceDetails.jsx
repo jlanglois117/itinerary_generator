@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Rating from '@material-ui/lab/Rating';
+import '../Content.css'
 
 import useStyles from './styles';
 
@@ -14,10 +15,11 @@ const PlaceDetails = ({ place }) => {
   };
 
   return (
+    <div className='cards'>
     <Card elevation={6} style={{ maxWidth: 500, maxHeight: 500 }}>
         <Link to={place.website} target="_blank" rel="noopener noreferrer">
         <CardMedia
-          style={{ height: 120, marginBottom: '-40px' }}
+          style={{ height: 120, marginBottom: '0px' }}
           image={
             place.photo
               ? place.photo.images.large.url
@@ -60,6 +62,7 @@ const PlaceDetails = ({ place }) => {
           place?.cuisine?.map(({ name }) => <Chip key={name} size="small" label={name} className={classes.chip}></Chip>)}
       </CardContent>
     </Card>
+    </div>
   );
 };
 

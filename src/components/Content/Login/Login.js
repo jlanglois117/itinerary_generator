@@ -9,8 +9,13 @@ function Login(){
    
 	const [values, setValues] = useState({
 		email: '',
-		password: ''
+		password: '',
+		fname: '',
+		lname: '',
+		username: ''
 	})
+
+	
 
 	const navigate = useNavigate();
 	const [user, setUser] = useState();
@@ -36,15 +41,22 @@ function Login(){
 					setBackendError([]);
 					if(res.data === "Success") {
 						setUser(response.data);
-						localStorage.setItem('user', response.data)
+						localStorage.setItem('email', values.email)
+						localStorage.setItem('pass', values.password)
+						localStorage.setItem('fname', values.fname)
+						localStorage.setItem('lname', values.lname)
+						localStorage.setItem('user', values.username)  
+						   
 						navigate('/account');                    
 					} 
 					else {                        
 						alert("Account doesn't exist");                    
 					}                
 				}                            
-			})            
-			.catch(err => console.log(err));        
+			}) 
+		         
+			.catch(err => console.log(err));
+
 		}    
 	}
 
