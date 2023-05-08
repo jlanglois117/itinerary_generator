@@ -2,14 +2,15 @@
     background-color: white;
     display: flex;
     width: 100%;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
     height: auto;
     padding: 30px;
     flex-direction: row;
     justify-content:space-evenly;
     height: calc(100vh - 142px);
-    
+    min-height: 100vh;
+
     position: relative;
  
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import '../Header/Header.css';
+import '../Footer/Footer.css';
 
 function Footer() {
     return (
-        <div className = "Container">
+        <div className = "Container2">
          <p>Footer</p>
         </div>
     );
