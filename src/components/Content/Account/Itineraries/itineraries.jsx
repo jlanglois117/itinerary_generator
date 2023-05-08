@@ -50,19 +50,6 @@ const Itineraries = () => {
                         </Grid>
                     ))
                 }
-                {/* {itineraryData &&
-                    itineraryData.map((itinerary, i) => (
-                        <Grid item xs={12} md={10} key={`itinerary-${i}`}>
-                            <Typography variant="h5" align="center" gutterBottom>Day {i+1}</Typography>
-                            {itinerary &&
-                                itinerary.map((place, j) => (
-                                    place && place.name &&
-                                        <PlaceDetails place={place} key={`place-${i}-${j}`} />
-                                ))
-                            }
-                        </Grid>
-                    ))
-                } */}
             </Grid>
         </div>
     )
