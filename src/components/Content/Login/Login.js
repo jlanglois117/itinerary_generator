@@ -12,7 +12,8 @@ function Login(){
 		password: '',
 		fname: '',
 		lname: '',
-		username: ''
+		username: '',
+		id: ''
 	})
 
 	
@@ -41,11 +42,7 @@ function Login(){
 					setBackendError([]);
 					if(res.data === "Success") {
 						setUser(response.data);
-						localStorage.setItem('email', values.email)
-						localStorage.setItem('pass', values.password)
-						localStorage.setItem('fname', values.fname)
-						localStorage.setItem('lname', values.lname)
-						localStorage.setItem('user', values.username)  
+						localStorage.setItem('email', values.email) 
 						   
 						navigate('/account');                    
 					} 
@@ -57,8 +54,28 @@ function Login(){
 		         
 			.catch(err => console.log(err));
 
+
+			axios.get('http://localhost:3306/userData', values)
+            .then(response => {
+                try{
+                    setValues(response.data);
+					localStorage.setItem('id', values.id);
+					localStorage.setItem('fname', values.fname);
+					localStorage.setItem('lname', values.lname);
+					localStorage.setItem('username', values.username);
+
+
+                    
+                }catch(error){
+                    console.log('error in parsing,', error);
+                }
+            })
+            .catch(error => console.log('error in data retrieval,', error));
+
 		}    
 	}
+
+    
 
 
 	return(

@@ -2,14 +2,16 @@
     background-color: white;
     display: flex;
     width: 100%;
-    
+    overflow: auto;
     position: relative;
     height: auto;
     padding: 30px;
     flex-direction: row;
     justify-content:space-evenly;
     height: calc(100vh - 142px);
+    min-height: 80vh;
     
+    position: relative;
  
 }
 
@@ -31,19 +33,17 @@ h2{
     text-align: left;
 }
 
-.cards{
-    z-index: 3;
-}
-
 .pic{
     position: absolute;
     text-align: center;
     margin-top: 10px;
     width: 650px;
     height: auto;
-    z-index: 0;
+    z-index: -1;
     
 }
+
+
 
 @font-face {
     font-family: 'MoonGlade';

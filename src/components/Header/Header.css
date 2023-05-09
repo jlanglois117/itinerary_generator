@@ -29,8 +29,8 @@ img {
 }
 
 .links {
-  position: absolute;
-  margin-left: 83%
+  
+  float: right;
 }
 
 .nav {

@@ -16,7 +16,7 @@ const Account = () => {
                 </Grid>
                 <Grid item xs={12} md={10}>
                     <User/>
-                    <Itineraries/>
+                    
                 </Grid>
             </Grid>
         </>

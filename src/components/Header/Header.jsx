@@ -17,9 +17,9 @@ const Header = () => {
             </a>
         <div className = 'links'>
         
-        
+        {localStorage.getItem('email') != null &&
             <a href = "/account" className = 'nav'>Profile</a>
-        
+        }
             <a href= "/login" className = 'nav'>Login</a>
        
         

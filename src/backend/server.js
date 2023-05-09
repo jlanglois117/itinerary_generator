@@ -35,8 +35,8 @@ const db = mysql.createConnection({
       })})
 
   app.post('/login', (req, res) => {    
-    const sql = "SELECT fname, lname, username FROM user WHERE email = ? AND password = ?";    
-    db.query(sql, [req.body.email,req.body.password, res.fname, res.lname, res.username], 
+    const sql = "SELECT * FROM user WHERE email = ? AND password = ?";    
+    db.query(sql, [req.body.email,req.body.password], 
       (err, data) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {            
@@ -57,7 +57,26 @@ const db = mysql.createConnection({
             }           
            })})
 
-          
+          const { promisify } = require('util');
+          const dbQuery = promisify(db.query).bind(db);
+
+           app.get('/userData', async(req,res) => {
+            
+            const sql = "SELECT id, fname, lname, username FROM user WHERE email = ?";
+            try{
+              const result = await dbQuery(sql, [req.body.email]);
+              if(result.length > 0){
+                res.json(result[0].data);
+                //console.log('from select'); //test
+                //console.log(result[0].data); //test
+              }else{
+                res.status(404).json('no data');
+              }
+            }catch(err) {
+              console.error(err);
+              res.status(500).json('internal serve issue');
+            }
+          });
 
     
           
@@ -66,5 +85,40 @@ const db = mysql.createConnection({
     console.log("listening")
   })
 
+    //storing itineraries
+   
+  
+    app.post('/itinerary', async(req,res) => { //gets data from the link ending in itinerary
+      const trips = req.body.tripsJson; //pulls that data and puts it in this variable
+      console.log('its from itinerary post');
+      console.log(req.body.tripsJson);
+      const sql = 'INSERT INTO itineraries (data) VALUES (?)'; 
+      try{ 
+        const result = await dbQuery(sql, [trips]); //combines sql string and the data
+        console.log('insert');
+        res.json(result);
+        console.log(result); //attempt at printing out what's in the DB, UNSUCCESSFUL
+      }catch (err) {
+        console.error(err);
+        res.json('Error');
+      }
+    });
+  
+    app.get('/itinerary', async(req,res) => {
+      const sql = "SELECT data FROM itineraries LIMIT 3";
+      try{
+        const result = await dbQuery(sql);
+        if(result.length > 0){
+          res.json(result[0].data);
+          //console.log('from select'); //test
+          //console.log(result[0].data); //test
+        }else{
+          res.status(404).json('no data');
+        }
+      }catch(err) {
+        console.error(err);
+        res.status(500).json('internal serve issue');
+      }
+    });
   
   

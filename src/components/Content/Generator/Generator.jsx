@@ -125,10 +125,9 @@ const Generator = () => {
           <MenuItem value={7}>7</MenuItem>
         </Select>
       </FormControl>
-      
-      <Button className={classes.buttons} variant="contained" color="primary" style={{backgroundColor: 'green'}}onClick={saveTrips}>Save Trip</Button>
       <Button className={classes.buttons} variant="contained" color="primary" style={{backgroundColor: 'green'}} onClick={handleGenerateTrips}>Generate Trip</Button>
-      <Grid container spacing={3}>
+      <Button className={classes.buttons} variant="contained" color="primary" style={{backgroundColor: 'green'}}onClick={saveTrips}>Save Trip</Button>
+      <Grid container spacing={3} justifyContent='center'>
   {trips &&
     trips.map((trip, i) => (
       <Grid item xs={12} md={4} key={`trip-${i}`}>

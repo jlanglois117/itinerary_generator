@@ -16,7 +16,7 @@ const PlaceDetails = ({ place }) => {
 
   return (
     <div className='cards'>
-    <Card elevation={6} style={{ maxWidth: 500, maxHeight: 500 }}>
+    <Card elevation={6} style={{ maxWidth: 500, maxHeight: 500, zIndex: 5 }}>
         <Link to={place.website} target="_blank" rel="noopener noreferrer">
         <CardMedia
           style={{ height: 120, marginBottom: '0px' }}
