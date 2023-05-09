@@ -87,9 +87,12 @@ const db = mysql.createConnection({
   });
 
   app.get('/itinerary', async(req,res) => {
-    const sql = "SELECT data FROM itineraries LIMIT 3";
+    const email = localStorage.getItem('email'); // Get email from local storage, user acc
+    //const sql = "SELECT data FROM itineraries LIMIT 3"; //OG
+    const sql = "SELECT data FROM itineraries WHERE email = ?" //user acc test
     try{
-      const result = await dbQuery(sql);
+      //const result = await dbQuery(sql); //OG
+      const result = await dbQuery(sql, [email]); //user acc test
       if(result.length > 0){
         res.json(result[0].data);
         console.log('from select'); //test
