@@ -90,10 +90,16 @@ const db = mysql.createConnection({
   
     app.post('/itinerary', async(req,res) => { //gets data from the link ending in itinerary
       const trips = req.body.tripsJson; //pulls that data and puts it in this variable
+      //const email = req.query.email;
+      //const email = localStorage.getItem('email');
       console.log('its from itinerary post');
       console.log(req.body.tripsJson);
+      // console.log('trying to insert to user acc');
+      // console.log(email);
+      //const sql = 'INSERT INTO itineraries (data, email) VALUES (?,?)'; 
       const sql = 'INSERT INTO itineraries (data) VALUES (?)'; 
       try{ 
+        //const result = await dbQuery(sql, [trips, email]); //combines sql string and the data
         const result = await dbQuery(sql, [trips]); //combines sql string and the data
         console.log('insert');
         res.json(result);
@@ -105,11 +111,18 @@ const db = mysql.createConnection({
     });
   
     app.get('/itinerary', async(req,res) => {
-      const sql = "SELECT data FROM itineraries LIMIT 3";
+      //const email = localStorage.getItem('email');
+      //const sql = "SELECT data FROM itineraries WHERE email = ? ORDER BY id DESC LIMIT 3"; //user acc
+      const sql = "SELECT data FROM itineraries ORDER BY id DESC LIMIT 3";
       try{
+        //const result = await dbQuery(sql, [email]);
         const result = await dbQuery(sql);
         if(result.length > 0){
-          res.json(result[0].data);
+          //res.json([result[0].data, result[1].data, result[2].data]);
+          //const data = res.json(result.map(row=>row.data));
+          // const data = result.map(row => row.data);
+          // res.json(data);
+          res.json(result[0].data); //only pulls the first row lol i think //OG
           //console.log('from select'); //test
           //console.log(result[0].data); //test
         }else{
@@ -120,5 +133,3 @@ const db = mysql.createConnection({
         res.status(500).json('internal serve issue');
       }
     });
-  
-  
