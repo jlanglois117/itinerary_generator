@@ -4,7 +4,7 @@ import { Grid } from "@material-ui/core";
 
 import Sidebar from "./Sidebar/Sidebar";
 import User from "./User/User";
-import Itineraries from"./Itineraries/Itineraries";
+import Itineraries from"./Itineraries/itineraries";
 
 const Account = () => {
     return(

@@ -12,9 +12,9 @@ const User = () => {
     const classes = useStyles();
     //editing
     const [editMode, setEditMode] = useState(false);
-    const [user, setUser] = useState(localStorage.getItem('username'));
-    const [firstName, setFirstName] = useState(localStorage.getItem('fname'));
-    const [lastName, setLastName] = useState(localStorage.getItem('lname'));
+    const [user, setUser] = useState("Testuser");
+    const [firstName, setFirstName] = useState("Test");
+    const [lastName, setLastName] = useState("Test");
     const [email, setEmail] = useState(localStorage.getItem('email'));
     const [password, setPassword] = useState("**********");
     

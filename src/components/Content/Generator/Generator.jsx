@@ -3,7 +3,7 @@ import { Button, FormControl, InputLabel, Select, MenuItem, Grid, Typography} fr
 import { getPlacesData } from '../../../api';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import '../Content.css';
-import axios from 'axios';
+import axios from 'axios'; //used for data transferring
 
 import useStyles from './styles';
 
@@ -71,17 +71,16 @@ const Generator = () => {
 
   const saveTrips = () => {
     const tripsJson = JSON.stringify(trips);
-    //const email = localStorage.getItem('email');
     console.log('its from generator.jsx');
-    console.log(tripsJson);
+    //console.log(tripsJson);
     axios.post('http://localhost:3306/itinerary', {tripsJson}) //sends the data in tripsJson from that link (we created that link)
       .then((res) => {
         console.log('success', res.data);
-        console.log('printing in success');
+        console.log('printign in success');
       })
       .catch((error) => {
         console.error('error', error);
-        console.log('printing in error');
+        console.log('printign in error');
       });
     return tripsJson; 
   };
