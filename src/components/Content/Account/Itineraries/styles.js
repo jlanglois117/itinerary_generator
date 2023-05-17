@@ -1,8 +1,9 @@
 import { makeStyles } from "@material-ui/core";
+import { Padding } from "@mui/icons-material";
 
 export default makeStyles((theme) => ({
     container: {
-        display: "flex"
+        display: "flex", Padding: '25px',
       },
       sidebar: {
         flex: "0 0 auto",
