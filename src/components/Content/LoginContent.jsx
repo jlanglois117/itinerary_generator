@@ -6,7 +6,7 @@ import './Content.css'
 
 function LoginContent() {
     return (
-        <div className = 'body'>
+        <div className = 'body2'>
          <div className = 'child'>
          <Login />
          </div>

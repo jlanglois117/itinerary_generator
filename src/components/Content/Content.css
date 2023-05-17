@@ -10,8 +10,29 @@
     justify-content:space-evenly;
     height: calc(100vh - 142px);
     min-height: 80vh;
-    
+
+    background-image: url("WLogo3_Clipped.png");
+    background-repeat: no-repeat;
+    background-size: 600px;
+    background-position: center;
+    justify-content: center;
+    background-attachment: local;
+
+ 
+}
+
+.body2{
+    background-color: white;
+    display: flex;
+    width: 100%;
+    overflow: auto;
     position: relative;
+    height: auto;
+    padding: 30px;
+    flex-direction: row;
+    justify-content:space-evenly;
+    height: calc(100vh - 142px);
+    min-height: 80vh;
  
 }
 
